@@ -15,9 +15,11 @@ module.exports = {
     if (amount % 1 != 0 || amount <= 0) return message.channel.send("amount must eb a whole number")
 
     try {
+
       const targetData = await profileSchema.findOne({
         userID: target.id
       })
+
       if (!targetData) return message.channel.send(`${target} user does not exist in the db`)
 
       await profileSchema.findOneAndUpdate({

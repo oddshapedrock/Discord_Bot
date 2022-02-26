@@ -1,0 +1,65 @@
+Commands -
+    + Command handler #
+    + Database
+
+    Moderation -
+      + Kick
+      + Ban
+      + Mute
+      + Purge
+      + Warning
+      + Report
+      + Temp Ban
+      + Temp Mute
+      + Reaction Roles
+
+    Server Currency -
+      + Balance
+      + Gamble (games)
+      + Deposit
+      + Give
+      + Buy
+
+    Games -
+      + Rock Paper Scissors
+      + Maze
+      + Tic-Tac-Toe (use buttons)
+      + RPG exploration game
+
+    Development -
+      + Ping #
+      + Test DB
+      + Bot Version
+      + Suggestions
+      + Session time
+
+    Configuration -
+      + Commands
+      + Enable Command
+      + Disable Command
+      + Set Prefix
+      + Set Command Access
+
+    DnD -
+      + Character Creation (Canvas)
+      + Character Show (DM should be able to see others)
+      + Character Edit (DM should be able to edit others)
+      + Item Generator
+      + Name Generator
+      + Roll (Private and Public)
+      + Private Chat With DM
+      + Create Session
+      + Add to Session
+      + Remove from Session
+      + Delete Session
+
+    Fun Additions
+      + Speak
+      + vote
+      + Bot Information
+
+
+Events -
+    + Is online #
+    + Status #
+    + Greeting

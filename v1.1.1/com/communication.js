@@ -20,7 +20,6 @@ module.exports = {
         "Jackass",
         "you piece of shit",
         "your a donkey",
-        "you are gay",
         "shit head",
       ],
       kind: [
@@ -172,7 +171,7 @@ module.exports = {
 
     if (found == "unknown") {
       const replies = [
-        "Sadly I do not know the answer to that. OddShapedRock has limited me after I sugested genocide",
+        "Sadly I do not know the answer to that. OddShapedRock has limited me after I suggested genocide",
         "Well wouldn't you like to know",
         "Have you heard of the internet? ...well its not me so fuck off",
         "Do I look like an answering machine to you?",

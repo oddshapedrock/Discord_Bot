@@ -12,7 +12,7 @@ module.exports = {
 		message.channel.send("Pinging...").then(msg => {
 			var ping = msg.createdTimestamp - message.createdTimestamp;
 			var embed = new Discord.MessageEmbed()
-				.setAuthor(`Pong`)
+				.setAuthor({name: `Pong`})
 				.setDescription('🏓 `' + ping + ' ms`')
 				.setColor('GREEN')
 

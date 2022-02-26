@@ -6,20 +6,19 @@ const { prefix } = require("../config.json");
 //gets the files
 module.exports = (client, Discord) => {
 	const fileList = [];
-	client.on("ready", () => {
-		const getAllFiles = dir => {
-			const files = fs.readdirSync(path.join(__dirname, dir));
-			for (const file of files) {
-				if (fs.statSync(path.join(__dirname, dir, file)).isDirectory()) {
-					getAllFiles(path.join(dir, file));
-				} else {
-					fileList.push(require(path.join(__dirname, dir, file)));
-				}
+
+	const getAllFiles = dir => {
+		const files = fs.readdirSync(path.join(__dirname, dir));
+		for (const file of files) {
+			if (fs.statSync(path.join(__dirname, dir, file)).isDirectory()) {
+				getAllFiles(path.join(dir, file));
+			} else {
+				fileList.push(require(path.join(__dirname, dir, file)));
 			}
-			return fileList;
-		};
-		getAllFiles("../commands");
-	});
+		}
+		return fileList;
+	};
+	getAllFiles("../commands");
 
 	//checks required permissions against Discord permission list
 	const checkPermissions = permissions => {
@@ -31,6 +30,8 @@ module.exports = (client, Discord) => {
 	};
 	//runs commands on a message
 	client.on("messageCreate", message => {
+		let temp = 0;
+let time1 = performance.now();
 		//TODO add a check to see what prefix the guild uses + ?can return other information such as permissions and roles needed for commands, and if the command is enabled?
 		if (message.content.startsWith(prefix) && !message.author.bot) {
 			for (i = 0; i < fileList.length; i++) {
@@ -53,9 +54,9 @@ module.exports = (client, Discord) => {
 				if (typeof aliases !== "object") {
 					aliases = [aliases];
 				}
-        if (typeof command !== "object") {
-				   command = [command];
-        }
+				if (typeof command !== "object") {
+					command = [command];
+				}
 				let commands = command.concat(aliases);
 
 				//checks permissions
@@ -65,7 +66,7 @@ module.exports = (client, Discord) => {
 				checkPermissions(requiredPerms);
 
 				for (let command of commands) {
-          command = command.toLowerCase();
+					command = command.toLowerCase();
 					let com = `${prefix}${command}`;
 					if (content.toLowerCase().startsWith(`${com} `) || content.toLowerCase() === com) {
 						for (const permission of requiredPerms) {
@@ -110,6 +111,10 @@ module.exports = (client, Discord) => {
 								return message.reply(`${com} expects between ${minArgs} and ${maxArgs} arguments`);
 							}
 						}
+						let time2 = performance.now();
+						console.log(com);
+						temp += (time2 - time1);
+						console.log(temp / 1)
 						return callback(message, args, args.join(" "), command, Discord, client);
 					}
 				}

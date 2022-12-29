@@ -1,0 +1,64 @@
+client.on('ready', () => {
+  console.log("ready");
+
+  const guildId = '789848432025272320';
+  const guild = client.guilds.cache.get(guildId);
+
+  let commands;
+
+  if (guild) {
+    commands = guild.commands
+  } else {
+    commands = client.application.commands
+  }
+
+  commands.create({
+    name: 'ping',
+    description: "pong",
+  })
+
+  commands.create({
+    name: "add",
+    description: "adds two nums",
+    options: [{
+      name: 'num1',
+      description: 'the first number',
+      required: "true",
+      type: Discord.Constants.ApplicationCommandOptionTypes.NUMBER,
+  },
+{
+  name: 'num2',
+  description: 'the second number',
+  required: "true",
+  type: Discord.Constants.ApplicationCommandOptionTypes.NUMBER,
+}]
+
+  })
+
+})
+
+
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	const { commandName, options } = interaction;
+
+	if (commandName === 'ping') {
+		await interaction.reply({content: 'pong', ephemeral: true,});
+	} else if (commandName === 'server') {
+		await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
+	} else if (commandName === 'user') {
+		await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
+	} else if (commandName === 'add') {
+   const num1 = options.getNumber('num1') || 0;
+   const num2 = options.getNumber('num2') || 0;
+
+   await interaction.deferReply({
+     ephemeral: true
+   })
+
+   await new Promise(resolve => setTimeout(resolve, 5000));
+
+   await interaction.editReply({content: `the sum is ${num1 + num2}`});
+ }
+});

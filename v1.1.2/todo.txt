@@ -1,4 +1,0 @@
-TODO: Reaction message roles
-TODO: Welcome message
-TODO: Add Games
-TODO: Response await system

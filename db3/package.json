@@ -12,8 +12,8 @@
   "dependencies": {
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "mongodb": "^3.6.4",
-    "mongoose": "^5.11.11",
+    "mongodb": "^3.7.4",
+    "mongoose": "^5.13.19",
     "node-fetch": "^2.6.1",
     "wokcommands": "^1.2.1"
   }
